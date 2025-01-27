@@ -1,20 +1,42 @@
 import { NavLink } from 'react-router-dom';
+import sprite from '../../assets/sprite.svg';
 
 const AppBar = () => {
   return (
-    <div className='text-black bg-inputs text-4xl'>
-      <NavLink
-        to='/'
-        className='text-text-light hover:text-btn-red font-bold text-2xl mr-2'
-      >
-        HomePage
-      </NavLink>
-      <NavLink
-        to='/catalog'
-        className='text-text-light hover:text-btn-red font-bold text-2xl'
-      >
-        Catalog
-      </NavLink>
+    <div className='relative  px-16 py-6 bg-gray-100 max-w-[1440px] m-auto'>
+      <div className='items-start absolute top-7 left-16'>
+        <svg className='' width={136} height={16}>
+          <use href={`${sprite}#icon-logo`}></use>
+        </svg>
+      </div>
+      <nav className=''>
+        <ul className='flex justify-center items-center  gap-8'>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                ` transition-all duration-300 hover:text-btn-red font-bold ${
+                  isActive ? 'text-btn-red' : 'text-text-color'
+                }`
+              }
+              to='/'
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                `transition-all duration-300 hover:text-btn-red font-bold ${
+                  isActive ? 'text-btn-red' : 'text-text-color'
+                }`
+              }
+              to='/catalog'
+            >
+              Catalog
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 };
