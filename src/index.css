@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './styles/fonts.css';
 
 :root {
   --background: #ffffff;
@@ -13,11 +14,13 @@
   --gray-100: #f2f4f7;
   --inputs: #f7f7f7;
 
+  font-family: 'Inter', 'sans-serif';
+
   transition: background-color 500ms ease;
 }
 
 @theme {
-  --font-display: 'Satoshi', 'sans-serif';
+  --font-display: 'Inter', 'sans-serif';
   --breakpoint-2xl: 1440px;
   --color-inputs: var(--inputs);
   --color-gray-100: var(--gray-100);
@@ -26,7 +29,17 @@
   --color-btn-red: var(--btn-red);
   --color-hover-btn-red: var(--hover-btn-red);
   --color-star-yelow: var(--star-yelow);
-  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --color-castom-gradient: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
   --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
   /* ... */
+}
+
+@media (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .bg-retina {
+    background-image: url('/assets/img/truck_bg@2x.jpg');
+  }
 }
