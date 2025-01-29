@@ -1,4 +1,4 @@
-import CommonButton from '../../components/CommonButton/CommonButton.jsx';
+import CommonButton from '../../components/buttons/CommonButton/CommonButton.jsx';
 
 const HomePage = () => {
   return (

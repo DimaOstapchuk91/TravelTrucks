@@ -13,10 +13,11 @@
   --shadow-castom: 0 10px 20px rgba(0, 0, 0, 0.8);
   --gray-100: #f2f4f7;
   --inputs: #f7f7f7;
+  --gray-light: #dadde1;
+  --text-light: #475467;
+  --gray: #6c717b;
 
   font-family: 'Inter', 'sans-serif';
-
-  transition: background-color 500ms ease;
 }
 
 @theme {
@@ -29,6 +30,9 @@
   --color-btn-red: var(--btn-red);
   --color-hover-btn-red: var(--hover-btn-red);
   --color-star-yelow: var(--star-yelow);
+  --color-gray-light: var(--gray-light);
+  --color-text-light: var(--text-light);
+  --color-gray: var(--gray);
   --color-castom-gradient: linear-gradient(
     0deg,
     rgba(0, 0, 0, 0.2) 0%,
