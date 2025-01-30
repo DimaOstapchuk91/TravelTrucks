@@ -1,12 +1,13 @@
 import { Field, Form, Formik } from 'formik';
 import sprite from '../../assets/sprite.svg';
-import { useDispatch } from 'react-redux';
-
-import { getCampers } from '../../redux/campers/operations.js';
+import { useDispatch, useSelector } from 'react-redux';
 import SubmitBtn from '../buttons/SubmitBtn/SubmitBtn.jsx';
+import { setParams } from '../../redux/campers/slice.js';
+import { selectIsLoading } from '../../redux/campers/selectors.js';
 
 const Filters = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   const locations = [
     'Kyiv, Ukraine',
@@ -30,14 +31,18 @@ const Filters = () => {
         }
       });
     }
+
     if (values.vehicleType) {
       params.append('form', values.vehicleType);
     }
+
     if (values.location) {
       params.append('location', values.location.split(', ')[0]);
     }
 
-    dispatch(getCampers(params));
+    const queryString = params.toString();
+
+    dispatch(setParams(queryString));
   };
   return (
     <Formik
@@ -93,7 +98,7 @@ const Filters = () => {
                     className='hidden'
                   />
                   <svg className='m-auto mb-1' width={32} height={32}>
-                    <use href={`${sprite}#icon-wind`}></use>
+                    <use href={`${sprite}#AC`}></use>
                   </svg>
                   <p className='text-center'>AC</p>
                 </label>
@@ -113,7 +118,7 @@ const Filters = () => {
                     className='hidden'
                   />
                   <svg className='m-auto mb-1' width={32} height={32}>
-                    <use href={`${sprite}#icon-diagram`}></use>
+                    <use href={`${sprite}#automatic`}></use>
                   </svg>
                   <p className='text-center'>Automatic</p>
                 </label>
@@ -133,7 +138,7 @@ const Filters = () => {
                     className='hidden'
                   />
                   <svg className='m-auto mb-1' width={32} height={32}>
-                    <use href={`${sprite}#icon-cup-hot`}></use>
+                    <use href={`${sprite}#kitchen`}></use>
                   </svg>
                   <p className='text-center'>Kitchen</p>
                 </label>
@@ -153,7 +158,7 @@ const Filters = () => {
                     className='hidden'
                   />
                   <svg className='m-auto mb-1' width={32} height={32}>
-                    <use href={`${sprite}#icon-tv`}></use>
+                    <use href={`${sprite}#TV`}></use>
                   </svg>
                   <p className='text-center'>TV</p>
                 </label>
@@ -173,7 +178,7 @@ const Filters = () => {
                     className='hidden'
                   />
                   <svg className='m-auto mb-1' width={32} height={32}>
-                    <use href={`${sprite}#icon-ph-shower`}></use>
+                    <use href={`${sprite}#bathroom`}></use>
                   </svg>
                   <p className='text-center'>Bathroom</p>
                 </label>
@@ -247,7 +252,7 @@ const Filters = () => {
               </li>
             </ul>
           </div>
-          <SubmitBtn value='Search' />
+          <SubmitBtn isLoading={isLoading} value='Search' />
         </Form>
       )}
     </Formik>

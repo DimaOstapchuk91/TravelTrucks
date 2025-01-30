@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import CatalogPage from './pages/CatalogPage/CatalogPage.jsx';
 import CamperPage from './pages/CamperPage/CamperPage.jsx';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
+import Reviews from './components/Reviews/Reviews.jsx';
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/catalog' element={<CatalogPage />} />
-        <Route path={`/catalog/:id`} element={<CamperPage />}></Route>
+        <Route path={`/catalog/:id`} element={<CamperPage />}>
+          <Route path='reviews' element={<Reviews />} />
+        </Route>
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <Toaster />

@@ -1,24 +1,11 @@
-import sprite from '../../assets/sprite.svg';
 import CommonButton from '../buttons/CommonButton/CommonButton.jsx';
 import FavoriteButton from '../buttons/FavoriteButton/FavoriteButton.jsx';
+import CamperFeature from '../CamperFeature/CamperFeature.jsx';
+import CamperInfoBar from '../CamperInfoBar/CamperInfoBar.jsx';
 
 const TruckItem = ({ camperInfo }) => {
   const { gallery, name, price, id, rating, reviews, location, description } =
     camperInfo;
-  // console.log(gallery[0].thumb);
-  const characteristic = Object.entries(camperInfo)
-    .filter(([key, value]) => {
-      if (key === 'transmission') {
-        return value === 'automatic'; // Перевірка для transmission
-      } else if (key === 'engine') {
-        return value;
-      }
-      return value === true && key !== 'radio'; // Для інших ключів
-    })
-    .map(([key, value]) =>
-      key === 'transmission' || key === 'engine' ? value : key
-    );
-  console.log(characteristic);
 
   return (
     <div className='w-[888px] flex gap-6 p-6 border border-gray-light rounded-[20px]'>
@@ -27,7 +14,6 @@ const TruckItem = ({ camperInfo }) => {
         src={gallery[0].thumb}
         alt={name}
       />
-
       <div className='w-full flex flex-col justify-between'>
         <div>
           <div className='flex justify-between items-center mb-2'>
@@ -41,36 +27,15 @@ const TruckItem = ({ camperInfo }) => {
               <FavoriteButton id={id} />
             </div>
           </div>
-          <div className='flex gap-4 mb-6'>
-            <p className='flex items-center gap-1'>
-              <svg className='fill-star-yelow' width={16} height={16}>
-                <use href={`${sprite}#icon-star`}></use>
-              </svg>
-              {`${rating}(${reviews.length} Reviews)`}
-            </p>
-            <p className='flex gap-1 items-center'>
-              <svg className='fill-text-color' width={16} height={16}>
-                <use href={`${sprite}#icon-map`}></use>
-              </svg>
-              {`${location.split(', ').pop()}, Ukraine`}
-            </p>
-          </div>
+          <CamperInfoBar
+            rating={rating}
+            reviews={reviews}
+            location={location}
+          />
           <p className='max-w-[524px] mb-6 text-text-light overflow-hidden text-ellipsis whitespace-nowrap'>
             {description}
           </p>
-          <ul className='flex flex-wrap gap-1'>
-            {characteristic.map((item, i) => (
-              <li
-                className='flex gap-1 items-center px-[18px] py-[6px] bg-gray-100 rounded-[100px]'
-                key={i}
-              >
-                <svg className='' width={20} height={20}>
-                  <use href={`${sprite}#icon-wind`}></use>
-                </svg>
-                {item}
-              </li>
-            ))}
-          </ul>
+          <CamperFeature camperInfo={camperInfo} />
         </div>
         <div className='max-2-[166px]'>
           <CommonButton value='Show more' redirect={`catalog/${id}`} />
