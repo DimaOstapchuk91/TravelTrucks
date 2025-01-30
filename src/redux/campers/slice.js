@@ -45,6 +45,7 @@ const campersSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(getCamperById.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.oneCamper = action.payload;
       })
       .addCase(getCamperById.pending, state => {

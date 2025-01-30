@@ -27,11 +27,13 @@ const TruckItem = ({ camperInfo }) => {
               <FavoriteButton id={id} />
             </div>
           </div>
-          <CamperInfoBar
-            rating={rating}
-            reviews={reviews}
-            location={location}
-          />
+          <div className='mb-6'>
+            <CamperInfoBar
+              rating={rating}
+              reviews={reviews}
+              location={location}
+            />
+          </div>
           <p className='max-w-[524px] mb-6 text-text-light overflow-hidden text-ellipsis whitespace-nowrap'>
             {description}
           </p>

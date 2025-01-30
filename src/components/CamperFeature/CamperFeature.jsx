@@ -1,6 +1,6 @@
 import sprite from '../../assets/sprite.svg';
 
-const CamperFeature = ({ camperInfo }) => {
+const CamperFeature = ({ camperInfo, featureClass }) => {
   const feature = Object.entries(camperInfo)
     .filter(([key, value]) => {
       if (key === 'transmission') {
@@ -18,7 +18,9 @@ const CamperFeature = ({ camperInfo }) => {
     <ul className='flex flex-wrap gap-1'>
       {feature.map((item, i) => (
         <li
-          className='flex gap-1 items-center px-[18px] py-[6px] bg-gray-100 rounded-[100px]'
+          className={`flex  items-center gap-2 px-[18px]  font-medium rounded-[100px] ${
+            featureClass ? 'py-[12px] bg-gray-light' : 'py-[6px] bg-gray-100'
+          }`}
           key={i}
         >
           <svg

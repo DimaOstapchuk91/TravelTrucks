@@ -10,7 +10,7 @@ const HomePage = () => {
         <p className='text-gray-100  text-[24px] leading-[32px] font-semibold mb-[40px]'>
           You can find everything you want in our catalog
         </p>
-        <CommonButton value={'View No'} redirect={'catalog'} />
+        <CommonButton value={'View Now'} redirect={'catalog'} />
       </div>
     </div>
   );
