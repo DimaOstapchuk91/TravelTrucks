@@ -18,7 +18,7 @@ const LoadMoreButton = () => {
   };
 
   return (
-    <div className='w-full flex'>
+    <div className='w-full flex justify-center'>
       {maxPage && (
         <button
           className='m-auto border border-gray-light transition-all duration-300 hover:border-hover-btn-red  px-8 py-4 rounded-[200px] cursor-pointer'
