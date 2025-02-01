@@ -10,7 +10,7 @@ const FavoriteButton = ({ id }) => {
 
   return (
     <svg
-      className={`cursor-pointer  w-6 h-6 transition-colors ${
+      className={`cursor-pointer transition-all duration-300 hover:fill-hover-btn-red  w-6 h-6  ${
         isFavorite ? 'fill-btn-red' : 'fill-text-color'
       }`}
       width={24}

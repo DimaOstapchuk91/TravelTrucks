@@ -20,14 +20,21 @@ const persistFavorites = {
   whitelist: ['favorites'],
 };
 
+const persistFilters = {
+  key: 'userFilter',
+  storage,
+  whitelist: ['userFilter', 'params'],
+};
+
 const persistedFavoritesReducer = persistReducer(
   persistFavorites,
   favoritesReducer
 );
+const persistedCampersReducer = persistReducer(persistFilters, campersReduser);
 
 export const store = configureStore({
   reducer: {
-    campers: campersReduser,
+    campers: persistedCampersReducer,
     favorites: persistedFavoritesReducer,
   },
   middleware: getDefaultMiddleware =>

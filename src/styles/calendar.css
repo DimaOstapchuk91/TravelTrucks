@@ -1,0 +1,90 @@
+.react-datepicker {
+  font-family: 'Inter', sans-serif !important;
+  border-radius: 12px !important;
+  background-color: var(--background) !important;
+  border-color: var(--text-light) !important;
+  width: 276px;
+  height: auto;
+}
+
+.react-datepicker__header {
+  background-color: var(--background) !important;
+  width: 274px;
+  border-bottom: 1px solid var(--text-light) !important;
+  border-radius: 12px 12px 0 0 !important;
+  padding: 12px !important;
+}
+
+.react-datepicker__current-month {
+  font-weight: 600 !important;
+  font-size: 16px !important;
+}
+
+.react-datepicker__day-name {
+  font-size: 12px;
+  font-weight: 600 !important;
+  color: var(--text-light) !important;
+  margin-right: 7px;
+}
+
+.react-datepicker__day {
+  padding: 0 !important;
+  color: var(--text-light);
+  text-align: center !important;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 14px !important;
+  border-radius: 100% !important;
+  transition: background-color 0.3s ease, transform 0.3s ease !important;
+}
+
+.react-datepicker__day:hover {
+  border-radius: 100% !important;
+  color: var(--background);
+  background-color: var(--text-light) !important;
+}
+
+.react-datepicker__day--selected {
+  background-color: var(--text-light) !important;
+  border-radius: 100% !important;
+  color: var(--background);
+}
+
+.react-datepicker__day--today {
+  border: 1px solid var(--text-light) !important;
+}
+
+.react-datepicker__day--disabled {
+  color: #cccccc !important;
+  cursor: not-allowed !important;
+}
+
+.react-datepicker__day--outside-month {
+  color: #bbb !important;
+}
+
+.react-datepicker__month {
+  padding: 0 !important;
+}
+
+.react-datepicker__navigation {
+  border-radius: 50% !important;
+  color: var(--text-light) !important;
+  fill: var(--text-light);
+  stroke: var(--text-light);
+  top: 10px;
+}
+
+.react-datepicker__triangle {
+  border-top-color: #4b9cdb !important;
+}
+
+.react-datepicker__input-container input {
+  background-color: var(--color-inputs) !important;
+  padding: 18px !important;
+  outline: none;
+  border-radius: 8px !important;
+  border: none !important;
+  width: 550px !important;
+  box-sizing: border-box !important;
+}

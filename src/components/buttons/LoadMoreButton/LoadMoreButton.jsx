@@ -10,7 +10,7 @@ const LoadMoreButton = () => {
   const page = useSelector(selectPage);
   const totalCampers = useSelector(selectTotalCampers);
   const isLoading = useSelector(selectIsLoading);
-  const maxPage = totalCampers / 4 >= page;
+  const maxPage = totalCampers / 4 > page;
 
   const dispatch = useDispatch();
   const handleClick = () => {
@@ -21,7 +21,7 @@ const LoadMoreButton = () => {
     <div className='w-full flex'>
       {maxPage && (
         <button
-          className='m-auto border border-gray-light px-8 py-4 rounded-[200px] cursor-pointer'
+          className='m-auto border border-gray-light transition-all duration-300 hover:border-hover-btn-red  px-8 py-4 rounded-[200px] cursor-pointer'
           type='button'
           onClick={handleClick}
           disabled={isLoading}

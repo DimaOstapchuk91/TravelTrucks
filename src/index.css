@@ -1,16 +1,13 @@
 @import 'tailwindcss';
 @import './styles/fonts.css';
-
+@import './styles/calendar.css';
 :root {
   --background: #ffffff;
   --text-color: #101828;
   --bg-gray: rgb(245, 250, 249);
   --btn-red: #e44848;
   --hover-btn-red: #d84343;
-  --hover-blue: rgb(8, 168, 241);
-  --hover-gray: rgb(199, 210, 219);
   --star-yelow: #ffc531;
-  --shadow-castom: 0 10px 20px rgba(0, 0, 0, 0.8);
   --gray-100: #f2f4f7;
   --inputs: #f7f7f7;
   --gray-light: #dadde1;
@@ -38,8 +35,6 @@
     rgba(0, 0, 0, 0.2) 0%,
     rgba(0, 0, 0, 0.2) 100%
   );
-  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
-  /* ... */
 }
 
 @media (min-resolution: 192dpi), (min-resolution: 2dppx) {

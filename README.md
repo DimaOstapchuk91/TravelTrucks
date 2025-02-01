@@ -32,7 +32,6 @@
 - **Redux Toolkit**: For state management.
 - **Axios**: For making API requests.
 - **Tailwind CSS**: For responsive and utility-first styling.
-- **Framer Motion**: For animations and transitions.
 - **ESLint & Prettier**: For code quality and formatting.
 
 ---

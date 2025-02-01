@@ -2,12 +2,22 @@ import { Field, Form, Formik } from 'formik';
 import sprite from '../../assets/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import SubmitBtn from '../buttons/SubmitBtn/SubmitBtn.jsx';
-import { setParams } from '../../redux/campers/slice.js';
-import { selectIsLoading } from '../../redux/campers/selectors.js';
+import {
+  resetState,
+  setFilters,
+  setParams,
+} from '../../redux/campers/slice.js';
+import {
+  selectIsLoading,
+  selectUserFilter,
+} from '../../redux/campers/selectors.js';
+import { getCampers } from '../../redux/campers/operations.js';
+import ResetButton from '../buttons/ResetButton/ResetButton.jsx';
 
 const Filters = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
+  const userFilter = useSelector(selectUserFilter);
 
   const locations = [
     'Kyiv, Ukraine',
@@ -43,13 +53,21 @@ const Filters = () => {
     const queryString = params.toString();
 
     dispatch(setParams(queryString));
+    dispatch(setFilters(values));
+    dispatch(getCampers({ params, page: 1 }));
+  };
+
+  const handleReset = resetFormik => {
+    dispatch(resetState());
+    resetFormik();
   };
   return (
     <Formik
-      initialValues={{ location: '', vehicleEquipment: [], vehicleType: '' }}
+      initialValues={userFilter}
+      enableReinitialize={true}
       onSubmit={handleSubmit}
     >
-      {({ values }) => (
+      {({ values, resetForm }) => (
         <Form className='max-w-[360px]'>
           <div className='mb-10'>
             <label className=''>
@@ -252,7 +270,10 @@ const Filters = () => {
               </li>
             </ul>
           </div>
-          <SubmitBtn isLoading={isLoading} value='Search' />
+          <div className='flex justify-between'>
+            <SubmitBtn isLoading={isLoading} value='Search' />
+            <ResetButton handleReset={() => handleReset(resetForm)} />
+          </div>
         </Form>
       )}
     </Formik>

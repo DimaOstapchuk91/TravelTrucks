@@ -7,6 +7,7 @@ const initialState = {
   page: 1,
   params: '',
   oneCamper: {},
+  userFilter: { location: '', vehicleEquipment: [], vehicleType: '' },
   isLoading: false,
   error: false,
 };
@@ -22,6 +23,10 @@ const campersSlice = createSlice({
       state.page = initialState.page;
       state.params = action.payload;
     },
+    setFilters: (state, action) => {
+      state.userFilter = action.payload;
+    },
+    resetState: () => initialState,
   },
   extraReducers: builder => {
     builder
@@ -45,19 +50,20 @@ const campersSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(getCamperById.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.oneCamper = action.payload;
+        state.isLoading = false;
       })
       .addCase(getCamperById.pending, state => {
         state.error = false;
         state.isLoading = true;
       })
-      .addCase(getCamperById.rejected, (state, action) => {
+      .addCase(getCamperById.rejected, state => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = true;
       });
   },
 });
 
-export const { incrementPage, setParams } = campersSlice.actions;
+export const { incrementPage, setParams, setFilters, resetState } =
+  campersSlice.actions;
 export const campersReduser = campersSlice.reducer;
