@@ -86,7 +86,7 @@ const Filters = () => {
                   ))}
                 </Field>
                 <svg
-                  className='absolute left-5 top-[20px]'
+                  className='absolute left-5 top-[16px]'
                   width={20}
                   height={20}
                 >
